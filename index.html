@@ -139,8 +139,7 @@
             nav.innerHTML = `
                 <div class="container mx-auto px-4 flex justify-between items-center py-4">
                     <div class="flex items-center space-x-2 cursor-pointer" id="logo-container">
-                        <img src="img.ico" alt="MindMate Logo" class="h-8 w-auto transition-colors duration-500"/>
-                        <h1 class="text-xl font-bold font-heading text-mindmate-blue dark:text-mindmate-blue-light transition-colors duration-500">MindMate</h1>
+                        <img src="img.ico" alt="MindMate Logo" class="h-10 w-auto transition-colors duration-500"/>
                     </div>
                     <div class="hidden md:flex space-x-8">
                         <button class="text-mindmate-bg-dark dark:text-mindmate-bg hover:text-mindmate-blue transition-colors duration-200" data-page="Home">Home</button>
@@ -158,7 +157,6 @@
             nav.querySelectorAll('button[data-page]').forEach(button => {
                 button.addEventListener('click', () => setPage(button.dataset.page));
             });
-            // Changed event listener to the new logo container
             nav.querySelector('#logo-container').addEventListener('click', () => setPage('Home'));
             nav.querySelector('#theme-toggle-btn').addEventListener('click', toggleTheme);
             return nav;
@@ -424,7 +422,11 @@
             if (currentPage === 'Home') {
                 const heroRef = document.getElementById('vanta-bg');
                 if (heroRef && window.VANTA) {
-                    window.VANTA.NET({
+                    // Ensure any existing Vanta instance is destroyed before creating a new one
+                    if (heroRef._vanta) {
+                         heroRef._vanta.destroy();
+                    }
+                    heroRef._vanta = window.VANTA.NET({
                         el: heroRef,
                         mouseControls: true,
                         touchControls: true,
@@ -476,6 +478,4 @@
 
     </script>
 </body>
-</html>
-
 </html>
