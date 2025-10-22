@@ -138,7 +138,10 @@
             nav.className = "fixed top-0 left-0 w-full z-50 bg-white bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80 backdrop-blur-md shadow-sm";
             nav.innerHTML = `
                 <div class="container mx-auto px-4 flex justify-between items-center py-4">
-                    <h1 class="text-xl font-bold font-heading text-mindmate-blue dark:text-mindmate-blue-light cursor-pointer">MindMate</h1>
+                    <div class="flex items-center space-x-2 cursor-pointer" id="logo-container">
+                        <img src="img.ico" alt="MindMate Logo" class="h-8 w-auto transition-colors duration-500"/>
+                        <h1 class="text-xl font-bold font-heading text-mindmate-blue dark:text-mindmate-blue-light transition-colors duration-500">MindMate</h1>
+                    </div>
                     <div class="hidden md:flex space-x-8">
                         <button class="text-mindmate-bg-dark dark:text-mindmate-bg hover:text-mindmate-blue transition-colors duration-200" data-page="Home">Home</button>
                         <button class="text-mindmate-bg-dark dark:text-mindmate-bg hover:text-mindmate-blue transition-colors duration-200" data-page="About">About</button>
@@ -155,7 +158,8 @@
             nav.querySelectorAll('button[data-page]').forEach(button => {
                 button.addEventListener('click', () => setPage(button.dataset.page));
             });
-            nav.querySelector('h1').addEventListener('click', () => setPage('Home'));
+            // Changed event listener to the new logo container
+            nav.querySelector('#logo-container').addEventListener('click', () => setPage('Home'));
             nav.querySelector('#theme-toggle-btn').addEventListener('click', toggleTheme);
             return nav;
         };
@@ -172,8 +176,7 @@
                         <button class="hover:text-mindmate-blue transition-colors duration-200" data-page="Contact">Contact</button>
                     </div>
                     <div class="flex justify-center space-x-6 mb-4">
-                        <!-- Social links SVGs can go here -->
-                    </div>
+                        </div>
                     <p class="text-sm">&copy; 2025 MindMate AI. All rights reserved.</p>
                     <p class="text-sm mt-2">Developed with passion by <span class="font-bold text-mindmate-blue">Surya</span></p>
                 </div>
@@ -216,7 +219,7 @@
                                     <p class="text-lg leading-relaxed">MindMate is the solution. Our AI-driven platform analyzes subtle cues in your voice, facial expressions, and text to provide a real-time understanding of your emotional state. This isn't just about detection—it's about empowerment. We give you the tools and personalized guidance to manage your emotions, improve focus, and build lasting resilience.</p>
                                 </div>
                                 <div class="md:w-1/2 flex justify-center">
-                                    <img src="unnamed.png" alt="A student using the MindMate app." class="rounded-lg shadow-xl w-full max-w-sm"/>
+                                    <img src="mindmate-about.png" alt="A student using the MindMate app." class="rounded-lg shadow-xl w-full max-w-sm"/>
                                 </div>
                             </div>
                         </div>
@@ -473,4 +476,6 @@
 
     </script>
 </body>
+</html>
+
 </html>
